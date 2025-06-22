@@ -36,7 +36,26 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'user_management',
+    'core',
+
 ]
+
+AUTH_USER_MODEL = 'user_management.UserAccount'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+AUTHENTICATION_BACKENDS = [
+    'core.authentication.EmailOrPhoneBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
