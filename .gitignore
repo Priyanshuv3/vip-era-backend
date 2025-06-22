@@ -1,11 +1,39 @@
-venv/
+# === Python Bytecode ===
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.sqlite3
-.env
-*.log
-*.pot
 *.py[cod]
+
+# === Virtual Environment ===
+venv/
+
+# === SQLite Database ===
+*.sqlite3
+
+# === Environment Variables ===
+.env
+
+# === Logs ===
+*.log
+
+# === Translation Files ===
+*.pot
+
+# === Static Files ===
 staticfiles/
+
+# === Media Files (optional if large user uploads) ===
+media/
+
+# === VSCode and IDE Settings ===
+.vscode/
+.idea/
+
+# === Django Migration Cache (BUT keep the actual migration .py files) ===
+**/migrations/__pycache__/
+**/migrations/*.pyc
+
+# === Coverage reports ===
+htmlcov/
+.coverage
