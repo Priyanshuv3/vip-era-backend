@@ -18,5 +18,5 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Expose port (optional)
 EXPOSE 8000
 
-# Start gunicorn (PORT will be provided by Railway)
-CMD ["gunicorn", "vipera.wsgi:application", "--bind", "0.0.0.0:$PORT"]
+# Start gunicorn with evaluated $PORT
+CMD ["sh", "-c", "gunicorn vipera.wsgi:application --bind 0.0.0.0:$PORT"]
