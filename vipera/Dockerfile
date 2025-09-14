@@ -19,4 +19,4 @@ ENV PATH="/opt/venv/bin:$PATH"
 EXPOSE 8000
 
 # Start gunicorn with evaluated $PORT
-CMD ["sh", "-c", "gunicorn vipera.wsgi:application --bind 0.0.0.0:$PORT"]
+CMD ["sh", "-c", "python manage.py migrate && python manage.py collectstatic --noinput && gunicorn vipera.wsgi:application --bind 0.0.0.0:$PORT"]

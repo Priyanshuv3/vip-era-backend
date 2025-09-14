@@ -33,6 +33,9 @@ media/
 # === Django Migration Cache (BUT keep the actual migration .py files) ===
 **/migrations/__pycache__/
 **/migrations/*.pyc
+**/migrations/*.py
+!**/migrations/__init__.py
+
 
 # === Coverage reports ===
 htmlcov/
