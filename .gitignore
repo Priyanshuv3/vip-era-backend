@@ -30,12 +30,10 @@ media/
 .vscode/
 .idea/
 
-# === Django Migration Cache (BUT keep the actual migration .py files) ===
+# === Django Migration Cache (ignore cache, but keep migration .py files) ===
 **/migrations/__pycache__/
 **/migrations/*.pyc
-**/migrations/*.py
-!**/migrations/__init__.py
-
+**/migrations/*.pyo
 
 # === Coverage reports ===
 htmlcov/
