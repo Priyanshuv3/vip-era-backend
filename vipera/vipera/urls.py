@@ -17,11 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from rest_framework.authtoken.views import obtain_auth_token
+from text2reel.views import generate_reel
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/user/', include('user_management.urls')),
     path('api/token-login/', obtain_auth_token),
-
+    path("api/text2reel/", generate_reel),
 ]
