@@ -37,6 +37,7 @@ def generate_reel(request):
 
         # ============================================
         scenes = split_text_into_scenes(text)
+        print("TOTAL SCENES:", len(scenes)) 
         clip_paths = []
 
         for i, scene in enumerate(scenes, start=1):
@@ -55,7 +56,6 @@ def generate_reel(request):
             output_clip_path = os.path.join(scene_dir, f"scene_{i}.mp4")
             clip_path = create_scene_video(image_path, summary, audio_path, output_clip_path)
             clip_paths.append(clip_path)
-
         # Merge all scenes into one reel
         final_video = merge_clips(clip_paths, session_dir)
 

@@ -9,4 +9,3 @@ SCENE_DIR = os.path.join(BASE_DIR, "assets/scenes/")
 for d in [OUTPUT_DIR, AUDIO_DIR, SCENE_DIR]:
     os.makedirs(d, exist_ok=True)
 
-SCENE_COUNT_LIMIT = 5

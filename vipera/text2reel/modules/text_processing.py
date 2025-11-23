@@ -1,25 +1,29 @@
 from transformers import pipeline
 import nltk
 from nltk.tokenize import sent_tokenize
-from .config import SCENE_COUNT_LIMIT
 
 nltk.download("punkt", quiet=True)
 
-def split_text_into_scenes(long_text: str):
-    sentences = sent_tokenize(long_text)
-    scenes, chunk = [], ""
-    for s in sentences:
-        if len(chunk) + len(s) < 180:
-            chunk += " " + s
+def split_text_into_scenes(text):
+    scenes = []
+    chunk = ""
+
+    for s in sent_tokenize(text):
+        s = s.strip()
+        
+        if len(s) > 220:
+            # Break long sentence into smaller chunks
+            parts = [s[i:i+220] for i in range(0, len(s), 220)]
+            scenes.extend(parts)
         else:
-            scenes.append(chunk.strip())
-            chunk = s
-    if chunk:
-        scenes.append(chunk.strip())
-    return scenes[:SCENE_COUNT_LIMIT]
+            scenes.append(s)
+    
+    return scenes
 
 
 def summarize_scene(scene_text: str):
-    summarizer = pipeline("summarization", model="facebook/bart-large-cnn")
-    result = summarizer(scene_text, max_length=60, min_length=20, do_sample=False)
+    summarizer = pipeline("summarization", model="t5-small")
+    result = summarizer(scene_text, max_length=40, min_length=10, do_sample=False)
     return result[0]["summary_text"]
+
+
